@@ -1,11 +1,8 @@
 all: debug
 
-# <replace-me>
+# Compile units
 
 <replace-me> := build/<replace-me>.o
-
-build/bmp.o: src/bmp/bmp.cpp
-	g++ -c $^ -o $@
 
 # Phonies
 
@@ -23,7 +20,7 @@ clean:
 
 # Linking
 
-build/lib_bmp.a: $(<replace-me>)
+build/lib_<replace-me>.a: $(<replace-me>)
 	ar rcs $@ $^
 
 # Main / Entry point
