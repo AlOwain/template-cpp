@@ -1,4 +1,6 @@
-all: debug
+# Uncomment the one you want to use.
+# all: lib
+# all: program
 
 # Compile units
 
@@ -6,11 +8,11 @@ all: debug
 
 # Phonies
 
-.PHONY: all clean lib debug
+.PHONY: all clean lib program
 
 lib: build build/lib-<replace-me>.a
 
-debug: build build/debug
+program: build build/<replace-me>
 
 build:
 	mkdir -p build
@@ -18,15 +20,15 @@ build:
 clean:
 	rm -rf build/
 
-# Linking
+# Library archival
 
 build/lib_<replace-me>.a: $(<replace-me>)
 	ar rcs $@ $^
 
-# Main / Entry point
+# Program entry point and linking
 
-build/main: build/main.o $(<replace-me>)
+build/<replace-me>: build/<replace-me>.o $(<replace-me>)
 	g++ $^ -o $@
 
-build/main.o: src/main.cpp
+build/<replace-me>.o: src/<replace-me>.cpp
 	g++ -c $^ -o $@
